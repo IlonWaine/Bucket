@@ -1,0 +1,20 @@
+<ScreenManager>:
+    Screen1:
+    Screen2:
+
+<Screen1>:
+    name: "screen1"
+    BoxLayout:
+        orientation: "vertical"
+        MDLabel:
+            text: "Screen 1"
+        MDRaisedButton:
+            text: "Go to Screen 2"
+            on_release: app.root.current = "screen2"
+
+<Screen2>:
+    name: "screen2"
+    BoxLayout:
+        orientation: "vertical"
+        MDLabel:
+            text: "Screen 2"
