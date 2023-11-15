@@ -588,7 +588,7 @@ Manager:
                     radius: [35,35,30,30]
 
             BoxLayout:
-                orientation:'horizontal'
+                orientation:'vertical'
                 # padding:15
 
                 canvas.before:
@@ -607,26 +607,31 @@ Manager:
                     id: mainLabel
                     text: root.activeWord
                     # size_hint_x: None  # Set the width size_hint to None
-                    # size_hint_y: 2    # Set the height size_hint to 2
+                    size_hint_y: 0.9    # Set the height size_hint to 2
                     width: self.width   # Set the width explicitly
                     halign: 'center'
                     valign: 'middle'
                     font_size: root.textFit(self.width,self.height,self.text)
                     text_size: self.width, None
 
-                
-                # Button:
-                #     # text:'Sound' 
-                #     background_down:'Sound.png'
-                #     background_normal:'Sound.png'
-                #     # pos: self.parent.width-self.width/2, self.parent.height 
-                #     on_release: root.callSound(root.activeWord)
-                #     size_hint: 0.2 ,0.2
-                #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                #     opacity: root.SondVisible
-                #     disabled: True if root.SondVisible==0 else False
-                #     # width: '70dp'
-                #     # height: '40dp'
+                BoxLayout:
+                    orientation:'vertical'
+                    size_hint_y: 0.02
+                    padding: 0,0,root.width*0.01,root.height*0.01
+                    Button:
+                        size_hint:None, None
+                        pos_hint: {'right': .98,}
+                        size:self.parent.height*5,self.parent.height*5
+                        # pos: self.parent.center_x,  self.parent.center_y  
+                        background_color: (0,0,0,0)
+                        on_release: root.callSound(root.activeWord)
+                        opacity: root.SondVisible
+                        disabled: True if root.SondVisible==0 else False
+                        Image:
+                            source:'Sound.png'
+                            size_hint:None,None
+                            size:self.parent.width,self.parent.height 
+                            pos: self.parent.center_x - self.width/2, self.parent.center_y - self.height / 2
 
                         
         BoxLayout:
